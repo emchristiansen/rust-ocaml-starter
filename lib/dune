@@ -1,4 +1,4 @@
 (executable
- (name rust_ocaml_starter)
- (public_name rust-ocaml-starter)
+ (name foo)
+ (public_name foo)
  (modes exe object))

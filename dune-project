@@ -1,6 +1,6 @@
 (lang dune 3.0)
 
-(name rust-ocaml-starter)
+(name foo)
 
 (generate_opam_files true)
 
@@ -16,7 +16,7 @@
 (documentation https://url/to/documentation)
 
 (package
- (name rust-ocaml-starter)
+ (name foo)
  (synopsis "A short synopsis")
  (description "A longer description")
  (depends ocaml dune)
