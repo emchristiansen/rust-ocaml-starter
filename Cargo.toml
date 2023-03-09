@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 ocaml = { git = "https://github.com/zshipko/ocaml-rs" }
+tokio = { version = "1.25.0", features = ["full"] }
 
 [build-dependencies]
 cc = { version = "1" }

@@ -84,6 +84,7 @@ let fetch_example_dot_com () =
   let open Lwt.Infix in
   let open Cohttp_lwt_unix in
   Client.get (Uri.of_string "http://example.com/") >>= fun (_, body) ->
+  print_endline "Fetching http://example.com/";
   body |> Cohttp_lwt.Body.to_string
 
 let () = Callback.register "fetch_example_dot_com" fetch_example_dot_com
