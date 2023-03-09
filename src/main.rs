@@ -1,5 +1,7 @@
 // Read the corresponding .ml file first.
 
+use std::{time::Duration, thread};
+
 ocaml::import! {
     fn hello_world() -> String;
 }
@@ -29,12 +31,24 @@ ocaml::import! {
     fn mystruct_inc_both(t: &MyStructT) -> MyStructT;
 }
 
-fn main() {
-    let gc = ocaml::runtime::init();
-
+// Run the non-async examples.
+fn run(gc: &ocaml::Runtime) {
     unsafe {
         println!("hello_world: {}", hello_world(&gc).unwrap());
         println!("maybe_inc: {:?}", maybe_inc(&gc, T::B(1)).unwrap());
-        println!("mystruct_inc_both: {:?}", mystruct_inc_both(&gc, &MyStructT{a: 1.0, b: 2}).unwrap());
+        println!(
+            "mystruct_inc_both: {:?}",
+            mystruct_inc_both(&gc, &MyStructT { a: 1.0, b: 2 }).unwrap()
+        );
     }
+}
+
+// Run the async example.
+async fn run_lwt(gc: &ocaml::Runtime) {
+}
+
+fn main() {
+    let gc = ocaml::runtime::init();
+    run(&gc);
+    run_lwt(&gc).await;
 }

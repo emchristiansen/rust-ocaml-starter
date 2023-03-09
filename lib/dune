@@ -1,4 +1,11 @@
+(env
+  (dev
+    (flags (:standard -w -A))))
+
 (executable
  (name foo)
  (public_name foo)
- (modes exe object))
+ (modes exe shared_object)
+ ; (flags (:standard -cclib -shared))
+ (libraries lwt lwt.unix cohttp-lwt-unix)
+ )
